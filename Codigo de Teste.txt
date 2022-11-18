@@ -1,0 +1,67 @@
+package teste.front;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class TesteFrontS {
+
+	private WebDriver driver;
+	
+	//inicio
+	@Before
+	
+	public void TestConfig() {
+	
+		System.setProperty("webdriver.chrome.driver","C:\\Users\\Administrator\\Desktop\\Programação\\01 SENAI\\Testes de Front\\chromedriver.exe");
+		driver = new ChromeDriver();
+        driver.manage().window().maximize();                              
+	}	
+	
+	//teste
+	@Test
+	
+	public void TestNav() {
+		
+		//WebElement menuSenha = driver.findElement(By.id("senha"));
+		//WebElement menuEmail = driver.findElement(By.id("email"));
+		//WebElement menuServicos = driver.findElement(By.xpath("//*[@id=\"menu\"]/a[2]"));
+		
+		try {
+		
+		driver.get("http://localhost:4200/");
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("//*[@id=\"menu\"]/a[2]")).click();
+		Thread.sleep(1000);
+		driver.findElement(By.id("email")).sendKeys("caiolsdev@email.com");
+		//driver.findElement(By.id("email")).clear();
+		Thread.sleep(1000);
+		driver.findElement(By.id("senha")).sendKeys("candyflip");
+		//driver.findElement(By.id("senha")).clear();
+		Thread.sleep(1000);
+		driver.findElement(By.id("botao-enviar")).sendKeys(Keys.ENTER);
+		Thread.sleep(3000);
+			} catch
+		(InterruptedException e) {e.printStackTrace();}
+		//TODO:handle exception
+		
+		//driver.get("https://informatica.sp.senai.br/");
+		//driver.findElement(By.id("Busca1_txtFiltro")).sendKeys("programação");
+		//driver.findElement(By.id("Busca1_btnBusca")).click();
+		//driver.findElement(By.id("Busca1_btnBusca")).sendKeys(Keys.ENTER);
+		
+	}
+	
+	//finalização
+	@After 
+	public void fim () {
+	
+		driver.quit();
+	
+		}
+	}
